@@ -3,22 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IHM;
-
-import javax.swing.JFrame;
+package Controleur;
+import Modele.Programmeur;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
  * @author Axel Carnez
  */
-public class start {
-
-	 /**
-	  * @param args the command line arguments
-	  */
-	 public static void main(String[] args) {
-		  FenetreMere windows = new FenetreMere();
-		
-	 }
-	 
+public interface ActionsBD {
+	 public ArrayList<Programmeur> getProgrammeur();
 }
