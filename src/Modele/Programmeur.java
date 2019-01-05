@@ -5,7 +5,7 @@
  */
 package Modele;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Programmeur {
 	 private int matricule;
 	 private String nom;
-	 private String renom;
+	 private String prenom;
 	 private String adresse;
 	 private String pseudo;
 	 private String responsable;
@@ -22,10 +22,10 @@ public class Programmeur {
 	 private Date naissance;
 	 private Date embauche;
 
-	 public Programmeur(int matricule, String nom, String renom, String adresse, String pseudo, String responsable, String hobby, Date naissance, Date embauche) {
+	 public Programmeur(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, Date naissance, Date embauche) {
 		  this.matricule = matricule;
 		  this.nom = nom;
-		  this.renom = renom;
+		  this.prenom = prenom;
 		  this.adresse = adresse;
 		  this.pseudo = pseudo;
 		  this.responsable = responsable;
@@ -36,7 +36,7 @@ public class Programmeur {
 
 	 @Override
 	 public String toString() {
-		  return  matricule + " " + nom + " " + renom + " " + adresse + " " + pseudo + " " + responsable + " " + hobby + " " + naissance + " " + embauche;
+		  return  matricule + " " + nom + " " +prenom + " " + adresse + " " + pseudo + " " + responsable + " " + hobby + " " + naissance + " " + embauche;
 	 }
 
 	 public int getMatricule() {
@@ -55,12 +55,12 @@ public class Programmeur {
 		  this.nom = nom;
 	 }
 
-	 public String getRenom() {
-		  return renom;
+	 public String getPrenom() {
+		  return prenom;
 	 }
 
-	 public void setRenom(String renom) {
-		  this.renom = renom;
+	 public void setPrenom(String prenom) {
+		  this.prenom = prenom;
 	 }
 
 	 public String getAdresse() {

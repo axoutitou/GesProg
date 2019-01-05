@@ -5,8 +5,17 @@
  */
 package Vue;
 
+import Controleur.DataTransac;
+import Modele.Programmeur;
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.*;
 
 /**
@@ -14,6 +23,9 @@ import javax.swing.*;
  * @author Axel Carnez
  */
 public class PanelAdministration extends JPanel{
+	 //JPANEL
+	 private JPanel matriculePan;
+	 private JPanel boutonPan;
 	 
 	 //CHAMPS
 	 private JLabel matriculeLab;
@@ -49,6 +61,10 @@ public class PanelAdministration extends JPanel{
 	 private GridBagLayout layout;
 	 private GridBagConstraints gbc;
 	 
+	 //DONNEES
+	 private DataTransac dt;
+	 private ArrayList<Programmeur> listProg;
+	 
 	 public PanelAdministration(){
 		  layout = new GridBagLayout();
 		  gbc = new GridBagConstraints();
@@ -56,14 +72,17 @@ public class PanelAdministration extends JPanel{
 		  
 		  //---------------------------------------------
 		  gbc.gridx = gbc.gridy = 0;
+		  gbc.gridwidth= 6;
+		  matriculePan = new JPanel();
 		  matriculeLab = new JLabel("Matricule");
-		  this.add(matriculeLab, gbc);
-		  gbc.gridx = 1;
+		  matriculePan.add(matriculeLab);
 		  matricule = new JTextField(15);
-		  this.add(matricule, gbc);
+		  matriculePan.add(matricule);
+		  matriculePan.setBackground(Color.gray);
+		  this.add(matriculePan, gbc);
 		  //---------------------------------------------
 		  gbc.gridx = 0;
-		  gbc.gridy = 1;
+		  gbc.gridwidth = gbc.gridy = 1;
 		  nomLab = new JLabel("Nom");
 		  this.add(nomLab, gbc);
 		  gbc.gridx = 1;
@@ -138,17 +157,25 @@ public class PanelAdministration extends JPanel{
 		  //---------------------------------------------
 		  gbc.gridx = 0;
 		  gbc.gridy = 5;
+		  gbc.gridwidth = 6;
+		  boutonPan = new JPanel();
 		  rechercher = new JButton("Rechercher");
-		  this.add(rechercher, gbc);
-		  gbc.gridx = 1;
+		  rechercher.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent arg0) {
+					rechercheProg(Integer.parseInt(matricule.getText()));
+			   }
+		  });
+		  boutonPan.add(rechercher);
 		  reinitialiser = new JButton("Réinitialiser");
-		  this.add(reinitialiser, gbc);
-		  gbc.gridx = 2;
+		  boutonPan.add(reinitialiser);
 		  valider = new JButton("Valider");
-		  this.add(valider, gbc);
-		  gbc.gridx = 3;
+		  boutonPan.add(valider);
 		  annuler = new JButton("Annuler");
-		  this.add(annuler, gbc);
+		  boutonPan.add(annuler);
+		  this.add(boutonPan, gbc);
+		  
+		  dt = new DataTransac();
+		  listProg = dt.getProgrammeur();
 	 }
 	 
 	 private void initComboBox(JComboBox box){
@@ -157,4 +184,36 @@ public class PanelAdministration extends JPanel{
 		  }
 	 }
 	 
+	 private void rechercheProg(int matricule){
+		  boolean erreur = true;
+		  for(int i=0; i<listProg.size(); i++){
+			   Programmeur prog = listProg.get(i);
+			   if(prog.getMatricule() == matricule){
+					erreur = false;
+					this.remplirInformations(prog.getMatricule(), prog.getNom(), prog.getPrenom(), prog.getAdresse(), prog.getPseudo(), prog.getResponsable(), prog.getNaissance(), prog.getHobby(), prog.getEmbauche());
+			   }
+		  }
+		  if(erreur){
+			   JOptionPane.showMessageDialog(new JFrame(),"Programmeur introuvable", "Echec", JOptionPane.ERROR_MESSAGE);  
+		  }
+	 }
+	 
+	 private void remplirInformations(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, Date dateNaiss, String hobby, Date dateEmb){
+		  this.matricule.setText(Integer.toString(matricule));
+		  this.nom.setText(nom.toString());
+		  this.prenom.setText(prenom.toString());
+		  this.adresse.setText(adresse.toString());
+		  this.pseudo.setText(pseudo.toString());
+		  Calendar calendar = new GregorianCalendar();
+		  calendar.setTime(dateNaiss);
+		  dateNaissanceJ.setText(Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)));
+		  dateNaissanceM.setSelectedIndex(calendar.get(Calendar.MONTH));
+		   dateNaissanceA.setText(Integer.toString(calendar.get(Calendar.YEAR)));
+		  this.responsable.setText(responsable.toString());
+		  calendar.setTime(dateEmb);
+		  dateEmbaucheJ.setText(Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)));
+		  dateEmbaucheM.setSelectedIndex(calendar.get(Calendar.MONTH));
+		   dateEmbaucheA.setText(Integer.toString(calendar.get(Calendar.YEAR)));
+		  this.hobby.setText(hobby.toString());
+	 }
 }

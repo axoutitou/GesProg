@@ -13,7 +13,7 @@ import javax.swing.*;
  *
  * @author 20181591
  */
-public class FenetreMere extends JFrame{
+public class FenetreMere extends GestionVueAbstraite{
             //Menu
 	  private JMenuBar menuBar;	  
 	  private JMenu prog;
@@ -24,14 +24,10 @@ public class FenetreMere extends JFrame{
 	  private JMenuItem supprimer;
 	  private JMenuItem ajouter;
 	  private JMenuItem quitter;
-	  
-	  //Gestion des différents panels
-	  private CardLayout layout;
-	  JPanel content;
-	  PanelAdministration administration;
-	  PanelAffichage affichage;
 
 	 public FenetreMere(){
+		  super();
+		  
 		  menuBar = new JMenuBar();
 		  //Premier menu Programmeur		  
 		  prog = new JMenu("Programmeur");
@@ -39,13 +35,28 @@ public class FenetreMere extends JFrame{
 		  tous = new JMenuItem("Tous");
 		  tous.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-					layout.show(content, "affichage");
+					show("affichage");
 					affichage.afficheProgrammeur();
 			   }
 		  });
 		  modifier = new JMenuItem("Modifier");
+		  modifier.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent arg0) {
+					show("administration");
+			   }
+		  });
 		  supprimer = new JMenuItem("Supprimer");
+		  supprimer.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent arg0) {
+					show("administration");
+			   }
+		  });
 		  ajouter = new JMenuItem("Ajouter");
+		  ajouter.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent arg0) {
+					show("administration");
+			   }
+		  });
 		  
 		  //Deuxième menu Action
 		  action = new JMenu("Action");
@@ -64,26 +75,14 @@ public class FenetreMere extends JFrame{
 		  action.add(quitter);
 		  
 		  menuBar.add(prog);
-		  menuBar.add(action);
-				 
-		  //Gestion des différents panel
-		  content = new JPanel();
-		  administration = new PanelAdministration();
-		  affichage = new PanelAffichage();
-		  layout = new CardLayout();
-		  content.setLayout(layout);
-		  content.add("administration", administration);
-		  content.add("affichage", affichage);
-		  
-		  
-		   //Paramètre de la JFrame
-		   this.setJMenuBar(menuBar);
-		   this.add(content);
-		   this.setVisible(true);
-		   this.setSize(500, 300);
-		   this.setLocation(300, 300);
-		   this.pack();
-		   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		  menuBar.add(action);		  
+		  this.setJMenuBar(menuBar);
+		  this.show("administration");
+	 }
+
+	 @Override
+	 public void show(String panel) {
+		  layout.show(content,panel);
 	 }
 }
 
