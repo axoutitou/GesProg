@@ -18,7 +18,6 @@ public class start {
 	  */
 	 public static void main(String[] args) {
 		  FenetreMere windows = new FenetreMere();
-		
 	 }
 	 
 }

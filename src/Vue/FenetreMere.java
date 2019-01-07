@@ -8,6 +8,7 @@ package Vue;
 import java.awt.CardLayout;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -66,7 +67,8 @@ public class FenetreMere extends GestionVueAbstraite{
 		  quitter = new JMenuItem("Quitter");
 		  quitter.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-					System.exit(0);
+					int input = JOptionPane.showConfirmDialog(null, "Vérification", "Voulez-vous vraiment quitter?", JOptionPane.YES_NO_OPTION); // 0=oui, 1=non
+					if(input == 0) System.exit(0);
 			   }
 		  });
 		  

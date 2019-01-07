@@ -65,15 +65,17 @@ public class PanelAdministration extends JPanel{
 	 private GridBagLayout layout;
 	 private GridBagConstraints gbc;
 	 private String filtre;
+	 private GestionVueAbstraite content;
 	 
 	 //DONNEES
 	 private DataTransac dt;
 	 private ArrayList<Programmeur> listProg;
 	 
-	 public PanelAdministration(){
+	 public PanelAdministration(GestionVueAbstraite content){
 		  layout = new GridBagLayout();
 		  gbc = new GridBagConstraints();
 		  this.setLayout(layout);
+		  this.content=content;
 		  
 		  //---------------------------------------------
 		  gbc.gridx = gbc.gridy = 0;
@@ -168,6 +170,7 @@ public class PanelAdministration extends JPanel{
 		  rechercher.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
 					rechercheProg(Integer.parseInt(matricule.getText()));
+					valider.setEnabled(true);
 			   }
 		  });
 		  boutonPan.add(rechercher);
@@ -183,6 +186,11 @@ public class PanelAdministration extends JPanel{
 		  });
 		  boutonPan.add(valider);
 		  annuler = new JButton("Annuler");
+		  annuler.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent arg0) {
+					content.show("accueil");
+			   }
+		  });
 		  boutonPan.add(annuler);
 		  this.add(boutonPan, gbc);
 		  
@@ -274,6 +282,88 @@ public class PanelAdministration extends JPanel{
 	 
 	 public void setFiltre(String monFiltre){
 		  filtre = monFiltre;
+		  if(filtre == "modifier"){
+			   nomLab.setEnabled(true);
+			   nom.setEnabled(true);
+			   prenomLab.setEnabled(true);
+			   prenom.setEnabled(true);
+			   adresseLab.setEnabled(true);
+			   adresse.setEnabled(true);
+			   pseudoLab.setEnabled(true);
+			   pseudo.setEnabled(true);
+			   responsableLab.setEnabled(true);
+			   responsable.setEnabled(true);
+			   dateNaissanceLab.setEnabled(true);
+			   dateNaissanceJ.setEnabled(true);
+			   dateNaissanceM.setEnabled(true);
+			   dateNaissanceA.setEnabled(true);
+			   hobbyLab.setEnabled(true);
+			   hobby.setEnabled(true);
+			   dateEmbaucheLab.setEnabled(true);
+			   dateEmbaucheJ.setEnabled(true);
+			   dateEmbaucheM.setEnabled(true);
+			   dateEmbaucheA.setEnabled(true);
+			   rechercher.setEnabled(true);
+			   reinitialiser.setEnabled(true);
+			   annuler.setEnabled(true); 
+			   reinitialiser.setEnabled(false);
+			   valider.setEnabled(false);
+		  }
+		  
+		  if(filtre == "supprimer"){
+			   nomLab.setEnabled(false);
+			   nom.setEnabled(false);
+			   prenomLab.setEnabled(false);
+			   prenom.setEnabled(false);
+			   adresseLab.setEnabled(false);
+			   adresse.setEnabled(false);
+			   pseudoLab.setEnabled(false);
+			   pseudo.setEnabled(false);
+			   responsableLab.setEnabled(false);
+			   responsable.setEnabled(false);
+			   dateNaissanceLab.setEnabled(false);
+			   dateNaissanceJ.setEnabled(false);
+			   dateNaissanceM.setEnabled(false);
+			   dateNaissanceA.setEnabled(false);
+			   hobbyLab.setEnabled(false);
+			   hobby.setEnabled(false);
+			   dateEmbaucheLab.setEnabled(false);
+			   dateEmbaucheJ.setEnabled(false);
+			   dateEmbaucheM.setEnabled(false);
+			   dateEmbaucheA.setEnabled(false);
+			   rechercher.setEnabled(false);
+			   reinitialiser.setEnabled(false);
+			   annuler.setEnabled(true);  
+			   valider.setEnabled(true);  
+		  }
+		  
+		  if(filtre == "ajouter"){
+			   nomLab.setEnabled(true);
+			   nom.setEnabled(true);
+			   prenomLab.setEnabled(true);
+			   prenom.setEnabled(true);
+			   adresseLab.setEnabled(true);
+			   adresse.setEnabled(true);
+			   pseudoLab.setEnabled(true);
+			   pseudo.setEnabled(true);
+			   responsableLab.setEnabled(true);
+			   responsable.setEnabled(true);
+			   dateNaissanceLab.setEnabled(true);
+			   dateNaissanceJ.setEnabled(true);
+			   dateNaissanceM.setEnabled(true);
+			   dateNaissanceA.setEnabled(true);
+			   hobbyLab.setEnabled(true);
+			   hobby.setEnabled(true);
+			   dateEmbaucheLab.setEnabled(true);
+			   dateEmbaucheJ.setEnabled(true);
+			   dateEmbaucheM.setEnabled(true);
+			   dateEmbaucheA.setEnabled(true);
+			   rechercher.setEnabled(true);
+			   reinitialiser.setEnabled(true);
+			   annuler.setEnabled(true); 
+			   rechercher.setEnabled(false);
+			   valider.setEnabled(true);
+		  }
 	 }
 	 
 	 private void reinitialiser(){
