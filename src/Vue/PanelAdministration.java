@@ -218,7 +218,10 @@ public class PanelAdministration extends JPanel{
 			   Programmeur prog = new Programmeur(Integer.parseInt(matricule.getText()), nom.getText(), prenom.getText(), adresse.getText(), pseudo.getText(), responsable.getText(), hobby.getText(), naissance, embauche);
 			   dt.ajouteProgrammeur(prog);
 			   listProg.add(prog);
-			   JOptionPane.showMessageDialog(new JFrame(),"Ajout réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);  
+			   if(filtre == "ajouter"){
+					JOptionPane.showMessageDialog(new JFrame(),"Ajout réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
+					reinitialiser();
+			   } 
 		  } catch (ParseException ex) {
 			   Logger.getLogger(PanelAdministration.class.getName()).log(Level.SEVERE, null, ex);
 		  }
@@ -231,7 +234,10 @@ public class PanelAdministration extends JPanel{
 			   if(prog.getMatricule() == matricule){
 					erreur = false;
 					dt.supprimeProgrammeur(matricule);
-					JOptionPane.showMessageDialog(new JFrame(),"Suppression réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
+					if(filtre == "supprimer"){
+						 JOptionPane.showMessageDialog(new JFrame(),"Suppression réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
+						 reinitialiser();
+					}
 					listProg.remove(i);
 			   }
 		  }
@@ -241,8 +247,10 @@ public class PanelAdministration extends JPanel{
 	 }
 	 
 	 private void modifieProg(int matricule){
-            supprimeProg(matricule);
-            ajouteProg();
+		  supprimeProg(matricule);
+		  ajouteProg();
+		  reinitialiser();
+		  JOptionPane.showMessageDialog(new JFrame(),"Modification réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
 	 }
 	 
 	 private void remplirInformations(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, Date dateNaiss, String hobby, Date dateEmb){
@@ -266,5 +274,21 @@ public class PanelAdministration extends JPanel{
 	 
 	 public void setFiltre(String monFiltre){
 		  filtre = monFiltre;
+	 }
+	 
+	 private void reinitialiser(){
+		  matricule.setText("");
+		  nom.setText("");
+		  prenom.setText("");
+		  adresse.setText("");
+		  pseudo.setText("");
+		  responsable.setText("");
+		  hobby.setText("");
+		  dateNaissanceJ.setText("jour");
+		  dateEmbaucheJ.setText("jour");
+		  dateNaissanceM.setSelectedItem(0);
+		  dateEmbaucheM.setSelectedItem(0);
+		  dateNaissanceA.setText("année");
+		  dateEmbaucheA.setText("année");
 	 }
 }

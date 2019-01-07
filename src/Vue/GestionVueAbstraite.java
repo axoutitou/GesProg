@@ -39,7 +39,7 @@ public abstract class GestionVueAbstraite extends JFrame{
 		   this.setContentPane(content);
 		   this.setVisible(true);
 		   this.setSize(500, 300);
-		   this.setLocation(300, 300);
+		   this.setLocation(300, 100);
 		   this.pack();
 		   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	  }

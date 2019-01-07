@@ -80,7 +80,8 @@ public class FenetreMere extends GestionVueAbstraite{
 		  menuBar.add(prog);
 		  menuBar.add(action);		  
 		  this.setJMenuBar(menuBar);
-		  this.show("administration");
+		  this.show("accueil");
+		  this.pack();
 	 }
 
 	 @Override
