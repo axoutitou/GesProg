@@ -55,4 +55,15 @@ public class DataTransac implements ActionsBD{
 		   
 		   return list;
 	 }
+	 
+	 public void ajouteProgrammeur(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, Date naissance, Date embauche){
+		  try {
+			 String requete = Constantes.REQUETE_AJOUT_PROG;
+			 requete = requete+"("+Integer.toString(matricule)+","+nom+","+prenom+","+adresse+","+pseudo+","+responsable+","+hobby+","+naissance+","+embauche+");";
+			 stmt = connect.createStatement();
+			 rs = stmt.executeQuery(requete);  
+		  } catch (SQLException ex) {
+			   Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, ex);
+		  }
+	 }
 }

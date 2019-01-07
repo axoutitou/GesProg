@@ -14,4 +14,6 @@ public class Constantes {
 	 public static final  String USER= "adm";
 	 public static final  String MDP = "adm";
 	 public static final  String REQUETE_ALL_PROG = "SELECT * FROM Programmeur";
+	 public static final  String REQUETE_AJOUT_PROG = "INSERT INTO PROGRAMMEUR (matricule, nom, prenom, adresse, pseudo, responsable, hobby, date_naiss, date_emb) VALUES ";
+	 
 }

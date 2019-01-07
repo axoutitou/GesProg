@@ -44,5 +44,6 @@ public abstract class GestionVueAbstraite extends JFrame{
 		   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	  }
 	  
+	  //GEstion de l'affichage
 	  public abstract void show(String panel);
 }

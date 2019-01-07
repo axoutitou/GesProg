@@ -169,6 +169,11 @@ public class PanelAdministration extends JPanel{
 		  reinitialiser = new JButton("Réinitialiser");
 		  boutonPan.add(reinitialiser);
 		  valider = new JButton("Valider");
+		  valider.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent arg0) {
+					ajouteProg();
+			   }
+		  });
 		  boutonPan.add(valider);
 		  annuler = new JButton("Annuler");
 		  boutonPan.add(annuler);
@@ -196,6 +201,10 @@ public class PanelAdministration extends JPanel{
 		  if(erreur){
 			   JOptionPane.showMessageDialog(new JFrame(),"Programmeur introuvable", "Echec", JOptionPane.ERROR_MESSAGE);  
 		  }
+	 }
+	 
+	 private void ajouteProg(){
+		  dt.ajouteProgrammeur(150, "Test", "Test", "Test", "Test", "Test", "Test", new Date(), new Date());
 	 }
 	 
 	 private void remplirInformations(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, Date dateNaiss, String hobby, Date dateEmb){

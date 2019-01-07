@@ -7,6 +7,7 @@ package Controleur;
 import Modele.Programmeur;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -14,4 +15,5 @@ import java.util.ArrayList;
  */
 public interface ActionsBD {
 	 public ArrayList<Programmeur> getProgrammeur();
+	 public void ajouteProgrammeur(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, Date naissance, Date embauche);
 }
