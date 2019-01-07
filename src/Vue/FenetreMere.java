@@ -43,18 +43,21 @@ public class FenetreMere extends GestionVueAbstraite{
 		  modifier.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
 					show("administration");
+					administration.setFiltre("modifier");
 			   }
 		  });
 		  supprimer = new JMenuItem("Supprimer");
 		  supprimer.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
 					show("administration");
+					administration.setFiltre("supprimer");
 			   }
 		  });
 		  ajouter = new JMenuItem("Ajouter");
 		  ajouter.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
 					show("administration");
+					administration.setFiltre("ajouter");
 			   }
 		  });
 		  

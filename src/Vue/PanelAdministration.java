@@ -12,10 +12,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -60,6 +64,7 @@ public class PanelAdministration extends JPanel{
 	 //LAYOUT MANAGER
 	 private GridBagLayout layout;
 	 private GridBagConstraints gbc;
+	 private String filtre;
 	 
 	 //DONNEES
 	 private DataTransac dt;
@@ -171,7 +176,9 @@ public class PanelAdministration extends JPanel{
 		  valider = new JButton("Valider");
 		  valider.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-					ajouteProg();
+					if(filtre ==  "ajouter") ajouteProg();
+					if(filtre ==  "supprimer") supprimeProg(Integer.parseInt(matricule.getText()));
+					if(filtre ==  "modifier") modifieProg();
 			   }
 		  });
 		  boutonPan.add(valider);
@@ -204,7 +211,37 @@ public class PanelAdministration extends JPanel{
 	 }
 	 
 	 private void ajouteProg(){
-		  dt.ajouteProgrammeur(150, "Test", "Test", "Test", "Test", "Test", "Test", new Date(), new Date());
+		  try {
+			   SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-dd");
+			   Date naissance = dateFormat.parse(dateNaissanceA.getText()+"-"+dateNaissanceM.getSelectedItem().toString()+"-"+dateNaissanceJ.getText());
+			   Date embauche = dateFormat.parse(dateEmbaucheA.getText()+"-"+dateEmbaucheM.getSelectedItem().toString()+"-"+dateEmbaucheJ.getText());
+			   Programmeur prog = new Programmeur(Integer.parseInt(matricule.getText()), nom.getText(), prenom.getText(), adresse.getText(), pseudo.getText(), responsable.getText(), hobby.getText(), naissance, embauche);
+			   dt.ajouteProgrammeur(prog);
+			   listProg.add(prog);
+			   JOptionPane.showMessageDialog(new JFrame(),"Ajout réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);  
+		  } catch (ParseException ex) {
+			   Logger.getLogger(PanelAdministration.class.getName()).log(Level.SEVERE, null, ex);
+		  }
+	 }
+	 
+	 private void supprimeProg(int matricule){
+		 boolean erreur = true;
+		  for(int i=0; i<listProg.size(); i++){
+			   Programmeur prog = listProg.get(i);
+			   if(prog.getMatricule() == matricule){
+					erreur = false;
+					dt.supprimeProgrammeur(matricule);
+					JOptionPane.showMessageDialog(new JFrame(),"Suppression réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
+					listProg.remove(i);
+			   }
+		  }
+		  if(erreur){
+			   JOptionPane.showMessageDialog(new JFrame(),"Programmeur introuvable", "Echec", JOptionPane.ERROR_MESSAGE);  
+		  }
+	 }
+	 
+	 private void modifieProg(){
+		 
 	 }
 	 
 	 private void remplirInformations(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, Date dateNaiss, String hobby, Date dateEmb){
@@ -224,5 +261,9 @@ public class PanelAdministration extends JPanel{
 		  dateEmbaucheM.setSelectedIndex(calendar.get(Calendar.MONTH));
 		   dateEmbaucheA.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		  this.hobby.setText(hobby.toString());
+	 }
+	 
+	 public void setFiltre(String monFiltre){
+		  filtre = monFiltre;
 	 }
 }

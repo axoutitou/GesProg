@@ -15,5 +15,5 @@ import java.util.Date;
  */
 public interface ActionsBD {
 	 public ArrayList<Programmeur> getProgrammeur();
-	 public void ajouteProgrammeur(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, Date naissance, Date embauche);
+	 public void ajouteProgrammeur(Programmeur prog);
 }

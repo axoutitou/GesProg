@@ -56,14 +56,35 @@ public class DataTransac implements ActionsBD{
 		   return list;
 	 }
 	 
-	 public void ajouteProgrammeur(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, Date naissance, Date embauche){
+	 public void ajouteProgrammeur(Programmeur prog){
 		  try {
-			 String requete = Constantes.REQUETE_AJOUT_PROG;
-			 requete = requete+"("+Integer.toString(matricule)+","+nom+","+prenom+","+adresse+","+pseudo+","+responsable+","+hobby+","+naissance+","+embauche+");";
-			 stmt = connect.createStatement();
-			 rs = stmt.executeQuery(requete);  
+			   PreparedStatement preparedStmt = connect.prepareStatement(Constantes.REQUETE_AJOUT_PROG);
+			   
+			   preparedStmt.setInt (1, prog.getMatricule());
+			   preparedStmt.setString (2, prog.getNom());
+			   preparedStmt.setString (3, prog.getPrenom());
+			   preparedStmt.setString (4, prog.getAdresse());
+			   preparedStmt.setString (5, prog.getPseudo());	   
+			   preparedStmt.setString (6, prog.getResponsable());
+			   preparedStmt.setString (7,prog.getHobby());
+			   preparedStmt.setDate (8, new java.sql.Date(prog.getNaissance().getTime()));
+			   preparedStmt.setDate (9, new java.sql.Date(prog.getEmbauche().getTime()));
+			   
+			   preparedStmt.execute();
 		  } catch (SQLException ex) {
 			   Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, ex);
 		  }
 	 }
+	 
+	 public void supprimeProgrammeur(int matricule){
+		  try{   
+			   String Matricule = Integer.toString(matricule);
+			   PreparedStatement preparedStmt = connect.prepareStatement(Constantes.REQUETE_DELETE_PROG);
+			   preparedStmt.setString (1, Matricule);
+			   preparedStmt.execute();  
+		   }  
+		  catch(SQLException ex) {
+			  Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, ex);
+		  }
+         }
 }
