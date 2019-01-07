@@ -178,7 +178,7 @@ public class PanelAdministration extends JPanel{
 			   public void actionPerformed(ActionEvent arg0) {
 					if(filtre ==  "ajouter") ajouteProg();
 					if(filtre ==  "supprimer") supprimeProg(Integer.parseInt(matricule.getText()));
-					if(filtre ==  "modifier") modifieProg();
+					if(filtre ==  "modifier") modifieProg(Integer.parseInt(matricule.getText()));
 			   }
 		  });
 		  boutonPan.add(valider);
@@ -240,8 +240,9 @@ public class PanelAdministration extends JPanel{
 		  }
 	 }
 	 
-	 private void modifieProg(){
-		 
+	 private void modifieProg(int matricule){
+            supprimeProg(matricule);
+            ajouteProg();
 	 }
 	 
 	 private void remplirInformations(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, Date dateNaiss, String hobby, Date dateEmb){

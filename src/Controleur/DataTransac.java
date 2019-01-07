@@ -87,4 +87,9 @@ public class DataTransac implements ActionsBD{
 			  Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, ex);
 		  }
          }
+         
+         public void updateProgrammeur(Programmeur Prog, int matricule){
+             supprimeProgrammeur(matricule);
+             ajouteProgrammeur(Prog);
+         }
 }
