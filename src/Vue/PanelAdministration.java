@@ -27,176 +27,301 @@ import javax.swing.*;
  * @author Axel Carnez
  */
 public class PanelAdministration extends JPanel{
-	 //JPANEL
-	 private JPanel matriculePan;
-	 private JPanel boutonPan;
-	 
-	 //CHAMPS
-	 private JLabel matriculeLab;
-	 private JTextField matricule;
-	 private JLabel nomLab;
-	 private JTextField nom;
-	 private JLabel prenomLab;
-	 private JTextField prenom;
+	  private JTextField adresse;
 	 private JLabel adresseLab;
-	 private JTextField adresse;
-	 private JLabel pseudoLab;
-	 private JTextField pseudo;
-	 private JLabel responsableLab;
-	 private JTextField responsable;
-	 private JLabel dateNaissanceLab;
-	 private JTextField dateNaissanceJ;
-	 private JComboBox dateNaissanceM;
-	 private JTextField dateNaissanceA;
-	 private JLabel hobbyLab;
-	 private JTextField hobby;
-	 private JLabel dateEmbaucheLab;
-	 private JTextField dateEmbaucheJ;
-	 private JComboBox dateEmbaucheM;
-	 private JTextField dateEmbaucheA;
-	 
-	 //BUTTONS
-	 private JButton rechercher;
-	 private JButton reinitialiser;
-	 private JButton valider;
-	 private JButton annuler;
-	 
-	 //LAYOUT MANAGER
-	 private GridBagLayout layout;
-	 private GridBagConstraints gbc;
-	 private String filtre;
-	 private GestionVueAbstraite content;
-	 
-	 //DONNEES
-	 private DataTransac dt;
-	 private ArrayList<Programmeur> listProg;
+	 private javax.swing.JButton annuler;
+	 private javax.swing.JPanel boutonPan;
+	 private javax.swing.JPanel champsPan;
+	 private javax.swing.JTextField dateEmbaucheA;
+	 private javax.swing.JTextField dateEmbaucheJ;
+	 private javax.swing.JLabel dateEmbaucheLab;
+	 private javax.swing.JComboBox dateEmbaucheM;
+	 private javax.swing.JTextField dateNaissanceA;
+	 private javax.swing.JTextField dateNaissanceJ;
+	 private javax.swing.JLabel dateNaissanceLab;
+	 private javax.swing.JComboBox dateNaissanceM;
+	 private javax.swing.JPanel fenetre;
+	 private javax.swing.JTextField hobby;
+	 private javax.swing.JLabel hobbyLab;
+	 private javax.swing.JTextField matricule;
+	 private javax.swing.JLabel matriculeLab;
+	 private javax.swing.JPanel matriculePan;
+	 private javax.swing.JTextField nom;
+	 private javax.swing.JLabel nomLab;
+	 private javax.swing.JTextField prenom;
+	 private javax.swing.JLabel prenomLab;
+	 private javax.swing.JTextField pseudo;
+	 private javax.swing.JLabel pseudoLab;
+	 private javax.swing.JButton rechercher;
+	 private javax.swing.JButton reinitialiser;
+	 private javax.swing.JTextField responsable;
+	 private javax.swing.JLabel responsableLab;
+	 private javax.swing.JButton valider;
+			 
+	private DataTransac dt;
+	private ArrayList<Programmeur> listProg;
+	private String filtre;
+	private GestionVueAbstraite content;
 	 
 	 public PanelAdministration(GestionVueAbstraite content){
-		  layout = new GridBagLayout();
-		  gbc = new GridBagConstraints();
-		  this.setLayout(layout);
-		  this.content=content;
-		  
-		  //---------------------------------------------
-		  gbc.gridx = gbc.gridy = 0;
-		  gbc.gridwidth= 6;
-		  matriculePan = new JPanel();
-		  matriculeLab = new JLabel("Matricule");
-		  matriculePan.add(matriculeLab);
-		  matricule = new JTextField(15);
-		  matriculePan.add(matricule);
-		  matriculePan.setBackground(Color.gray);
-		  this.add(matriculePan, gbc);
-		  //---------------------------------------------
-		  gbc.gridx = 0;
-		  gbc.gridwidth = gbc.gridy = 1;
-		  nomLab = new JLabel("Nom");
-		  this.add(nomLab, gbc);
-		  gbc.gridx = 1;
-		  nom = new JTextField(15);
-		  this.add(nom, gbc);
-		  gbc.gridx = 2;
-		  prenomLab = new JLabel("Prenom");
-		  this.add(prenomLab, gbc);
-		  gbc.gridx = 3;
-		  prenom = new JTextField(15);
-		  this.add(prenom, gbc);
-		  //---------------------------------------------
-		  gbc.gridx = 0;
-		  gbc.gridy = 2;
-		  adresseLab = new JLabel("Adresse");
-		  this.add(adresseLab, gbc);
-		  gbc.gridx = 1;
-		  adresse = new JTextField(15);
-		  this.add(adresse, gbc);
-		  gbc.gridx = 2;
-		  pseudoLab = new JLabel("Pseudo");
-		  this.add(pseudoLab, gbc);
-		  gbc.gridx = 3;
-		  pseudo = new JTextField(15);
-		  this.add(pseudo, gbc);
-		   //---------------------------------------------
-		  gbc.gridx = 0;
-		  gbc.gridy = 3;
-		  responsableLab = new JLabel("Responsable");
-		  this.add(responsableLab, gbc);
-		  gbc.gridx = 1;
-		  responsable = new JTextField(15);
-		  this.add(responsable, gbc);
-		  gbc.gridx = 2;
-		  dateNaissanceLab = new JLabel("Date de Naissance");
-		  this.add(dateNaissanceLab, gbc);
-		  gbc.gridx = 3;
-		  dateNaissanceJ = new JTextField(4);
+	 
+		  champsPan = new javax.swing.JPanel();
+		  nomLab = new javax.swing.JLabel();
+		  adresseLab = new javax.swing.JLabel();
+		  responsableLab = new javax.swing.JLabel();
+		  hobbyLab = new javax.swing.JLabel();
+		  nom = new javax.swing.JTextField();
+		  adresse = new javax.swing.JTextField();
+		  responsable = new javax.swing.JTextField();
+		  hobby = new javax.swing.JTextField();
+		  prenomLab = new javax.swing.JLabel();
+		  pseudoLab = new javax.swing.JLabel();
+		  dateNaissanceLab = new javax.swing.JLabel();
+		  dateEmbaucheLab = new javax.swing.JLabel();
+		  prenom = new javax.swing.JTextField();
+		  pseudo = new javax.swing.JTextField();
+		  dateNaissanceJ = new javax.swing.JTextField();
+		  dateEmbaucheJ = new javax.swing.JTextField();
+		  dateNaissanceM = new javax.swing.JComboBox();
+		  dateNaissanceA = new javax.swing.JTextField();
+		  dateEmbaucheA = new javax.swing.JTextField();
+		  dateEmbaucheM = new javax.swing.JComboBox();
+		  matriculePan = new javax.swing.JPanel();
+		  matriculeLab = new javax.swing.JLabel();
+		  matricule = new javax.swing.JTextField();
+		  boutonPan = new javax.swing.JPanel();
+		  rechercher = new javax.swing.JButton();
+		  reinitialiser = new javax.swing.JButton();
+		  valider = new javax.swing.JButton();
+		  annuler = new javax.swing.JButton();
+
+		  nomLab.setText("Nom");
+		  adresseLab.setText("Adresse");
+		  responsableLab.setText("Responsable");
+		  hobbyLab.setText("Hobby");
+		  prenomLab.setText("Prénom");
+		  pseudoLab.setText("Pseudo");
+		  dateNaissanceLab.setText("Date de naissance");
+		  dateEmbaucheLab.setText("Date d'embauche");
 		  dateNaissanceJ.setText("jour");
-		  this.add(dateNaissanceJ, gbc);
-		  gbc.gridx = 4;
-		  dateNaissanceM = new JComboBox();
-		  this.initComboBox(dateNaissanceM);
-		  this.add(dateNaissanceM, gbc);
-		  gbc.gridx =  5;
-		  dateNaissanceA = new JTextField(5);
-		  dateNaissanceA.setText("année");
-		  this.add(dateNaissanceA, gbc);
-		  //---------------------------------------------
-		  gbc.gridx = 0;
-		  gbc.gridy = 4;
-		  hobbyLab = new JLabel("Hobby");
-		  this.add(hobbyLab, gbc);
-		  gbc.gridx = 1;
-		  hobby = new JTextField(15);
-		  this.add(hobby, gbc);
-		  gbc.gridx = 2;
-		  dateEmbaucheLab = new JLabel("Date Embauche");
-		  this.add(dateEmbaucheLab, gbc);
-		  gbc.gridx = 3;
-		  dateEmbaucheJ = new JTextField(4);
 		  dateEmbaucheJ.setText("jour");
-		  this.add(dateEmbaucheJ, gbc);
-		  gbc.gridx = 4;
-		  dateEmbaucheM = new JComboBox();
-		  this.initComboBox(dateEmbaucheM);
-		  this.add(dateEmbaucheM, gbc);
-		  gbc.gridx =  5;
-		  dateEmbaucheA = new JTextField(5);
+		  initComboBox(dateNaissanceM);
+		  dateNaissanceA.setText("année");
 		  dateEmbaucheA.setText("année");
-		  this.add(dateEmbaucheA, gbc);
-		  //---------------------------------------------
-		  gbc.gridx = 0;
-		  gbc.gridy = 5;
-		  gbc.gridwidth = 6;
-		  boutonPan = new JPanel();
-		  rechercher = new JButton("Rechercher");
-		  rechercher.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-					rechercheProg(Integer.parseInt(matricule.getText()));
-					valider.setEnabled(true);
+		  initComboBox(dateEmbaucheM);
+
+		  javax.swing.GroupLayout champsPanLayout = new javax.swing.GroupLayout(champsPan);
+		  champsPan.setLayout(champsPanLayout);
+		  champsPanLayout.setHorizontalGroup(
+			   champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			   .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, champsPanLayout.createSequentialGroup()
+					.addGap(39, 39, 39)
+					.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						 .addComponent(nomLab)
+						 .addComponent(adresseLab)
+						 .addComponent(responsableLab)
+						 .addComponent(hobbyLab))
+					.addGap(22, 22, 22)
+					.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+						 .addComponent(adresse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+						 .addComponent(responsable, javax.swing.GroupLayout.Alignment.LEADING)
+						 .addComponent(hobby, javax.swing.GroupLayout.Alignment.LEADING)
+						 .addComponent(nom))
+					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+					.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						 .addComponent(prenomLab)
+						 .addComponent(pseudoLab)
+						 .addGroup(champsPanLayout.createSequentialGroup()
+							  .addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								   .addComponent(dateEmbaucheLab)
+								   .addComponent(dateNaissanceLab))
+							  .addGap(13, 13, 13)
+							  .addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								   .addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+										.addComponent(pseudo, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+										.addComponent(prenom))
+								   .addGroup(champsPanLayout.createSequentialGroup()
+										.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+											 .addComponent(dateEmbaucheJ, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+											 .addComponent(dateNaissanceJ, javax.swing.GroupLayout.Alignment.LEADING))
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+											 .addComponent(dateEmbaucheM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											 .addComponent(dateNaissanceM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+					.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+						 .addComponent(dateNaissanceA, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+						 .addComponent(dateEmbaucheA))
+					.addGap(40, 40, 40))
+		  );
+		  champsPanLayout.setVerticalGroup(
+			   champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			   .addGroup(champsPanLayout.createSequentialGroup()
+					.addGap(25, 25, 25)
+					.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						 .addComponent(nomLab)
+						 .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addComponent(prenomLab)
+						 .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+					.addGap(18, 18, 18)
+					.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						 .addComponent(adresseLab)
+						 .addComponent(adresse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addComponent(pseudoLab)
+						 .addComponent(pseudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+					.addGap(18, 18, 18)
+					.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						 .addComponent(responsableLab)
+						 .addComponent(responsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addComponent(dateNaissanceLab)
+						 .addComponent(dateNaissanceJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addComponent(dateNaissanceM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addComponent(dateNaissanceA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+					.addGap(18, 18, 18)
+					.addGroup(champsPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						 .addComponent(hobbyLab)
+						 .addComponent(hobby, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addComponent(dateEmbaucheLab)
+						 .addComponent(dateEmbaucheJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addComponent(dateEmbaucheM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addComponent(dateEmbaucheA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+					.addGap(0, 30, Short.MAX_VALUE))
+		  );
+
+		  matriculePan.setBackground(new java.awt.Color(102, 102, 102));
+
+		  matriculeLab.setForeground(new java.awt.Color(255, 255, 255));
+		  matriculeLab.setText("Matricule");
+
+		  javax.swing.GroupLayout matriculePanLayout = new javax.swing.GroupLayout(matriculePan);
+		  matriculePan.setLayout(matriculePanLayout);
+		  matriculePanLayout.setHorizontalGroup(
+			   matriculePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			   .addGroup(matriculePanLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(matriculeLab)
+					.addGap(18, 18, 18)
+					.addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		  );
+		  matriculePanLayout.setVerticalGroup(
+			   matriculePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			   .addGroup(matriculePanLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(matriculePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						 .addComponent(matriculeLab)
+						 .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(20, Short.MAX_VALUE))
+		  );
+
+		  rechercher.setText("Rechercher");
+		  rechercher.addActionListener(new java.awt.event.ActionListener() {
+			   public void actionPerformed(java.awt.event.ActionEvent evt) {
+					rechercherActionPerformed(evt);
 			   }
 		  });
-		  boutonPan.add(rechercher);
-		  reinitialiser = new JButton("Réinitialiser");
-		  boutonPan.add(reinitialiser);
-		  valider = new JButton("Valider");
-		  valider.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-					if(filtre ==  "ajouter") ajouteProg();
-					if(filtre ==  "supprimer") supprimeProg(Integer.parseInt(matricule.getText()));
-					if(filtre ==  "modifier") modifieProg(Integer.parseInt(matricule.getText()));
+
+		  reinitialiser.setText("Réinitialiser");
+		  reinitialiser.addActionListener(new java.awt.event.ActionListener() {
+			   public void actionPerformed(java.awt.event.ActionEvent evt) {
+					reinitialiserActionPerformed(evt);
 			   }
 		  });
-		  boutonPan.add(valider);
-		  annuler = new JButton("Annuler");
-		  annuler.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
+
+		  valider.setText("Valider");
+		  valider.addActionListener(new java.awt.event.ActionListener() {
+			   public void actionPerformed(java.awt.event.ActionEvent evt) {
+					validerActionPerformed(evt);
 					content.show("accueil");
 			   }
 		  });
-		  boutonPan.add(annuler);
-		  this.add(boutonPan, gbc);
+
+		  annuler.setText("Annuler");
+		  annuler.addActionListener(new java.awt.event.ActionListener() {
+			   public void actionPerformed(java.awt.event.ActionEvent evt) {
+					annulerActionPerformed(evt);
+			   }
+		  });
+
+		  javax.swing.GroupLayout boutonPanLayout = new javax.swing.GroupLayout(boutonPan);
+		  boutonPan.setLayout(boutonPanLayout);
+		  boutonPanLayout.setHorizontalGroup(
+			   boutonPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			   .addGroup(boutonPanLayout.createSequentialGroup()
+					.addGap(88, 88, 88)
+					.addComponent(rechercher)
+					.addGap(18, 18, 18)
+					.addComponent(reinitialiser)
+					.addGap(18, 18, 18)
+					.addComponent(valider)
+					.addGap(18, 18, 18)
+					.addComponent(annuler)
+					.addContainerGap(90, Short.MAX_VALUE))
+		  );
+		  boutonPanLayout.setVerticalGroup(
+			   boutonPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			   .addGroup(boutonPanLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(boutonPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						 .addComponent(rechercher)
+						 .addComponent(reinitialiser)
+						 .addComponent(valider)
+						 .addComponent(annuler))
+					.addContainerGap(16, Short.MAX_VALUE))
+		  );
+
+		  javax.swing.GroupLayout fenetreLayout = new javax.swing.GroupLayout(this);
+		  this.setLayout(fenetreLayout);
+		  fenetreLayout.setHorizontalGroup(
+			   fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			   .addComponent(matriculePan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			   .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fenetreLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(boutonPan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addContainerGap())
+			   .addGroup(fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addGroup(fenetreLayout.createSequentialGroup()
+						 .addGap(0, 0, Short.MAX_VALUE)
+						 .addComponent(champsPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addGap(0, 0, Short.MAX_VALUE)))
+		  );
+		  fenetreLayout.setVerticalGroup(
+			   fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			   .addGroup(fenetreLayout.createSequentialGroup()
+					.addComponent(matriculePan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+					.addComponent(boutonPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+			   .addGroup(fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addGroup(fenetreLayout.createSequentialGroup()
+						 .addGap(0, 0, Short.MAX_VALUE)
+						 .addComponent(champsPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						 .addGap(0, 0, Short.MAX_VALUE)))
+		  );
 		  
 		  dt = new DataTransac();
-		  listProg = dt.getProgrammeur();
+		  listProg = dt.getProgrammeur();  
+		  this.content = content;
 	 }
+	 
+	 private void rechercherActionPerformed(java.awt.event.ActionEvent evt) {                                           
+		  rechercheProg(Integer.parseInt(matricule.getText()));
+		  valider.setEnabled(true);
+	 }                                          
+
+	 private void reinitialiserActionPerformed(java.awt.event.ActionEvent evt) {                                              
+		  reinitialiser();
+	 }                                             
+
+	 private void validerActionPerformed(java.awt.event.ActionEvent evt) {                                        
+		  if(filtre =="modifier") modifieProg(Integer.parseInt(matricule.getText()));
+		  if(filtre =="ajouter") ajouteProg();
+		  if(filtre =="supprimer") supprimeProg(Integer.parseInt(matricule.getText()));
+	 }                                       
+
+	 private void annulerActionPerformed(java.awt.event.ActionEvent evt) {                                        
+		  content.show("accueil");
+	 }                                                       
+ 
 	 
 	 private void initComboBox(JComboBox box){
 		  for(int i=1; i<=12; i++){
@@ -282,6 +407,7 @@ public class PanelAdministration extends JPanel{
 	 
 	 public void setFiltre(String monFiltre){
 		  filtre = monFiltre;
+		  reinitialiser();
 		  if(filtre == "modifier"){
 			   nomLab.setEnabled(true);
 			   nom.setEnabled(true);
