@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * JFrame qui regroupe tout les JPanels et gère l'affichage de ces derniers
  * @author Axel Odran
  */
 public class FenetreMere extends GestionVueAbstraite{
@@ -27,8 +27,10 @@ public class FenetreMere extends GestionVueAbstraite{
 	  private JMenuItem quitter;
 
 	 public FenetreMere(){
+		  //Appel du constructeur de la classe mere
 		  super();
 		  
+		  //Création du menu
 		  menuBar = new JMenuBar();
 		  //Premier menu Programmeur		  
 		  prog = new JMenu("Programmeur");
@@ -86,6 +88,10 @@ public class FenetreMere extends GestionVueAbstraite{
 		  this.pack();
 	 }
 
+	 /**
+	  * Permet de modifier le panel qui est actuellement afficher à l'écran 
+	  * @param panel Le nom du panel que l'on veut afficher
+	  */
 	 @Override
 	 public void show(String panel) {
 		  layout.show(content,panel);

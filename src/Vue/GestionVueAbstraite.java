@@ -26,9 +26,10 @@ public abstract class GestionVueAbstraite extends JFrame{
 	  protected PanelAdministration administration;
 	  protected PanelAffichage affichage;
 	  
+	  //Appliquation du LookAndFeel "Windows"
 	  public GestionVueAbstraite(){
 		    try {
-			   UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			   UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		  } catch (ClassNotFoundException ex) {
 			   Logger.getLogger(start.class.getName()).log(Level.SEVERE, null, ex);
 		  } catch (InstantiationException ex) {
@@ -58,6 +59,10 @@ public abstract class GestionVueAbstraite extends JFrame{
 		   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	  }
 	  
-	  //GEstion de l'affichage
+	  /**
+	  * Permet de modifier le panel qui est actuellement afficher à l'écran 
+	  * @param panel Le nom du panel que l'on veut afficher
+	  */
+	  //Gestion de l'affichage
 	  public abstract void show(String panel);
 }

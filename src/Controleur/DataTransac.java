@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * GEstion de la base de données
  * @author Axel Odran
  */
 public class DataTransac implements ActionsBD{
@@ -33,7 +33,6 @@ public class DataTransac implements ActionsBD{
 	 }
          /**
          * Retourne la liste des programmeurs 
-         * 
          * @return Une ArrayList composée de Programmeur , qui correspond à la des programmeurs en enregistrer en base.
          */
          @Override
@@ -87,7 +86,7 @@ public class DataTransac implements ActionsBD{
 		  }
 	 }
 	 /**
-          * 
+          * Supprime un programmeur de la base de données
           * @param matricule 
           */
 	 public void supprimeProgrammeur(int matricule){
@@ -102,6 +101,11 @@ public class DataTransac implements ActionsBD{
 		  }
          }
          
+	 /**
+	  * Mets à jour les informations d'un programmeur en base de données
+	  * @param Prog
+	  * @param matricule 
+	  */
          public void updateProgrammeur(Programmeur Prog, int matricule){
              supprimeProgrammeur(matricule);
              ajouteProgrammeur(Prog);

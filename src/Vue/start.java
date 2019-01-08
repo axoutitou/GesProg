@@ -8,14 +8,11 @@ package Vue;
 import javax.swing.JFrame;
 
 /**
- *
+ * Lancement de l'application
  * @author Axel Odran
  */
 public class start {
 
-	 /**
-	  * Lance la fentere mère
-	  */
 	 public static void main(String[] args) {
 		  FenetreMere windows = new FenetreMere();
 	 }

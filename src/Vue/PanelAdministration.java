@@ -23,11 +23,12 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
- *
+ * Fournit un JPanel avec tout les champs à saisir pour l'administration des programmeurs
  * @author Axel Odran
  */
 public class PanelAdministration extends JPanel{
-	  private JTextField adresse;
+	 //CHAMPS LABEL JPANEL BUTTON
+	 private JTextField adresse;
 	 private JLabel adresseLab;
 	 private javax.swing.JButton annuler;
 	 private javax.swing.JPanel boutonPan;
@@ -58,13 +59,18 @@ public class PanelAdministration extends JPanel{
 	 private javax.swing.JLabel responsableLab;
 	 private javax.swing.JButton valider;
 			 
+	//DONNEES
 	private DataTransac dt;
 	private ArrayList<Programmeur> listProg;
+	
+	//GESTION DES FILTRES POUR ACTIVER OU DESACTIVER LES ELLEMENTS
 	private String filtre;
+	
+	//GESTION DE L'AFFICHAGE
 	private GestionVueAbstraite content;
 	 
 	 public PanelAdministration(GestionVueAbstraite content){
-	 
+		  //Classe générer à partir du designer
 		  champsPan = new javax.swing.JPanel();
 		  nomLab = new javax.swing.JLabel();
 		  adresseLab = new javax.swing.JLabel();
@@ -213,7 +219,8 @@ public class PanelAdministration extends JPanel{
 						 .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(20, Short.MAX_VALUE))
 		  );
-
+		  
+		  //Gestion des évènements par rapports aux boutons
 		  rechercher.setText("Rechercher");
 		  rechercher.addActionListener(new java.awt.event.ActionListener() {
 			   public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,6 +309,10 @@ public class PanelAdministration extends JPanel{
 		  this.content = content;
 	 }
 	 
+	 /**
+	  * Action liée au bouton rechercher
+	  * @param evt 
+	  */
 	 private void rechercherActionPerformed(java.awt.event.ActionEvent evt) {
 		  if(!matricule.getText().toString().matches("\\p{Digit}+")){
 			   JOptionPane.showMessageDialog(new JFrame(),"Veuillez saisir un entier pour le matricule", "Echec", JOptionPane.ERROR_MESSAGE); 
@@ -312,10 +323,18 @@ public class PanelAdministration extends JPanel{
 		  }
 	 }                                          
 
+	 /**
+	  * Action liée au bouton reinitialiser
+	  * @param evt 
+	  */
 	 private void reinitialiserActionPerformed(java.awt.event.ActionEvent evt) {                                              
 		  reinitialiser();
 	 }                                             
 
+	 /**
+	  * Action liée au bouton valider
+	  * @param evt 
+	  */
 	 private void validerActionPerformed(java.awt.event.ActionEvent evt) {
 		  if(!matricule.getText().toString().matches("\\p{Digit}+")){
 			   JOptionPane.showMessageDialog(new JFrame(),"Veuillez saisir un entier pour le matricule", "Echec", JOptionPane.ERROR_MESSAGE); 
@@ -326,18 +345,29 @@ public class PanelAdministration extends JPanel{
 		  }
 		  if(filtre =="ajouter") ajouteProg();
 	 }                                       
-
+	 
+	 /**
+	  * Action liée au bouton annuler
+	  * @param evt 
+	  */
 	 private void annulerActionPerformed(java.awt.event.ActionEvent evt) {                                        
 		  content.show("accueil");
 	 }                                                       
  
-	 
+	 /**
+	  * Iinitialise les ComboBox avec des éléments de 1 à 12 pour les mois de l'année
+	  * @param box JComboBox à initialiser
+	  */
 	 private void initComboBox(JComboBox box){
 		  for(int i=1; i<=12; i++){
 			   box.addItem(Integer.toString(i));
 		  }
 	 }
 	 
+	 /**
+	  * Recherche un programmeur en fonction de son matricule 
+	  * @param matricule Matricule recherchés
+	  */
 	 private void rechercheProg(int matricule){
 		  boolean erreur = true;
 		  for(int i=0; i<listProg.size(); i++){
@@ -352,6 +382,9 @@ public class PanelAdministration extends JPanel{
 		  }
 	 }
 	 
+	 /**
+	  * Créer un programmeur en récupérant tout les champs du formulaire
+	  */
 	 private void ajouteProg(){
 		  if(matricule.getText().length()== 0 || nom.getText().length()== 0 || prenom.getText().length() == 0 || adresse.getText().length() == 0 || hobby.getText().length() == 0 || responsable.getText().length() == 0 || pseudo.getText().length() == 0){
 			   JOptionPane.showMessageDialog(new JFrame(),"Veuillez remplir tout les champs !", "Echec", JOptionPane.ERROR_MESSAGE);  
@@ -380,6 +413,10 @@ public class PanelAdministration extends JPanel{
 		  }
 	 }
 	 
+	 /**
+	  * Supprime un programmeur en fonction de son matricule
+	  * @param matricule 
+	  */
 	 private void supprimeProg(int matricule){
 		 boolean erreur = true;
 		  for(int i=0; i<listProg.size(); i++){
@@ -401,12 +438,28 @@ public class PanelAdministration extends JPanel{
 		  }
 	 }
 	 
+	 /**
+	  * Modifie un programmeur en fonction de son matricule
+	  * @param matricule
+	  */
 	 private void modifieProg(int matricule){
 		  supprimeProg(matricule);
 		  ajouteProg();
 		  JOptionPane.showMessageDialog(new JFrame(),"Modification réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
 	 }
 	 
+	 /**
+	  * Remplie tout les champs du formulaire par rapport aux informations d'un programmeur
+	  * @param matricule
+	  * @param nom
+	  * @param prenom
+	  * @param adresse
+	  * @param pseudo
+	  * @param responsable
+	  * @param dateNaiss
+	  * @param hobby
+	  * @param dateEmb 
+	  */
 	 private void remplirInformations(int matricule, String nom, String prenom, String adresse, String pseudo, String responsable, Date dateNaiss, String hobby, Date dateEmb){
 		  this.matricule.setText(Integer.toString(matricule));
 		  this.nom.setText(nom.toString());
@@ -426,6 +479,10 @@ public class PanelAdministration extends JPanel{
 		  this.hobby.setText(hobby.toString());
 	 }
 	 
+	 /**
+	  * Permet d'appliquer un filtre pour notre JPanel et ainsi activer/désactiver les différents champs
+	  * @param monFiltre 
+	  */
 	 public void setFiltre(String monFiltre){
 		  filtre = monFiltre;
 		  reinitialiser();
@@ -513,6 +570,9 @@ public class PanelAdministration extends JPanel{
 		  }
 	 }
 	 
+	 /**
+	  * Réinitialise tout les champs du formulaire
+	  */
 	 private void reinitialiser(){
 		  matricule.setText("");
 		  nom.setText("");

@@ -34,19 +34,28 @@ public class Programmeur {
 		  this.embauche = embauche;
 	 }
 
+	 /**
+	  * Informations sur le programmeur pour l'affichage
+	  * @return une chaine de caractère composé de toutes les informations du programmeur
+	  */
 	 @Override
 	 public String toString() {
 		  return  matricule + " " + nom + " " +prenom + " " + adresse + " " + pseudo + " " + responsable + " " + hobby + " " + naissance + " " + embauche;
 	 }
 
+	 /**
+	  * Retourne le matricule du programmeur
+	  * @return un int , correspondant au matricule du programmeur
+	  */
 	 public int getMatricule() {
 		  return matricule;
 	 }
+	 
          /**
-         * Met à jour le matricule du membre.
+         * Met à jour le matricule du programmeur.
          * 
          * @param matricule
-         * Le nouveau matricule du membre.
+         * Le nouveau matricule du programmeur.
          */
 	 public void setMatricule(int matricule) {
 		  this.matricule = matricule;
@@ -60,10 +69,10 @@ public class Programmeur {
 		  return nom;
 	 }
          /**
-         * Met à jour le nom du membre.
+         * Met à jour le nom du programmeur.
          * 
          * @param nom
-         * Le nouveau Nom du membre.
+         * Le nouveau Nom du programmeur.
          */
 	 public void setNom(String nom) {
 		  this.nom = nom;
@@ -77,10 +86,10 @@ public class Programmeur {
 		  return prenom;
 	 }
          /**
-         * Met à jour le prenom du membre.
+         * Met à jour le prenom du programmeur.
          * 
          * @param prenom
-         * Le nouveau Prenom du membre.
+         * Le nouveau Prenom du programmeur.
          */
 	 public void setPrenom(String prenom) {
 		  this.prenom = prenom;
@@ -94,10 +103,10 @@ public class Programmeur {
 		  return adresse;
 	 }
          /**
-         * Met à jour le adresse du membre.
+         * Met à jour le adresse du programmeur.
          * 
          * @param adresse
-         * La nouvelle Adresse du membre.
+         * La nouvelle Adresse du programmeur.
          */
 	 public void setAdresse(String adresse) {
 		  this.adresse = adresse;
@@ -111,10 +120,10 @@ public class Programmeur {
 		  return pseudo;
 	 }
          /**
-         * Met à jour le pseudo du membre.
+         * Met à jour le pseudo du programmeur.
          * 
          * @param pseudo
-         * Le nouveau Pseudo du membre.
+         * Le nouveau Pseudo du programmeur.
          */
 	 public void setPseudo(String pseudo) {
 		  this.pseudo = pseudo;
@@ -128,10 +137,10 @@ public class Programmeur {
 		  return responsable;
 	 }
         /**
-         * Met à jour le responsable du membre.
+         * Met à jour le responsable du programmeur.
          * 
          * @param responsable
-         * Le nouveau Responsable du membre.
+         * Le nouveau Responsable du programmeur.
          */
 	 public void setResponsable(String responsable) {
 		  this.responsable = responsable;
@@ -146,10 +155,10 @@ public class Programmeur {
 	 }
 
          /**
-         * Met à jour le hobby du membre.
+         * Met à jour le hobby du programmeur.
          * 
          * @param hobby
-         * Le nouveau Hobby du membre.
+         * Le nouveau Hobby du programmeur.
          */
 
 	 public void setHobby(String hobby) {
@@ -164,10 +173,10 @@ public class Programmeur {
 		  return naissance;
 	 }
          /**
-         * Met à jour la date de naissance du membre.
+         * Met à jour la date de naissance du programmeur.
          * 
          * @param naissance
-         * La nouvelle date de naissance du membre.
+         * La nouvelle date de naissance du programmeur.
          */
 	 public void setNaissance(Date naissance) {
 		  this.naissance = naissance;
@@ -181,10 +190,10 @@ public class Programmeur {
 		  return embauche;
 	 }
          /**
-         * Met à jour la date d'embauche du membre.
+         * Met à jour la date d'embauche du programmeur.
          * 
          * @param embauche
-         * La nouvelle date d'embauche du membre.
+         * La nouvelle date d'embauche du programmeur.
          */
 	 public void setEmbauche(Date embauche) {
 		  this.embauche = embauche;

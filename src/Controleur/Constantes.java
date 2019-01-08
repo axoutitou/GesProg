@@ -6,7 +6,7 @@
 package Controleur;
 
 /**
- * Classe comportant des constantes divers
+ * Classe comportant des constantes divers (Paramètres de conexion à la base de données, requêtes)
  * @author Axel Odran
  */
 public class Constantes {
