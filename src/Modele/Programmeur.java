@@ -90,7 +90,7 @@ public class Programmeur {
 	 public String getHobby() {
 		  return hobby;
 	 }
-
+	 
 	 public void setHobby(String hobby) {
 		  this.hobby = hobby;
 	 }
@@ -110,6 +110,4 @@ public class Programmeur {
 	 public void setEmbauche(Date embauche) {
 		  this.embauche = embauche;
 	 }
-	 
-	 
 }

@@ -16,10 +16,12 @@ import javax.swing.*;
  */
 public class PanelAffichage extends JPanel{
 	 private JTextArea affichage;
+	 private JScrollPane scroll;
 	 
 	 public PanelAffichage(){
-		  affichage = new JTextArea(20, 60);
-		  this.add(affichage);
+		  affichage = new JTextArea(15, 60);
+		  scroll = new JScrollPane(affichage);
+		  this.add(scroll);
 	 }
 	 
 	 public void afficheProgrammeur(){

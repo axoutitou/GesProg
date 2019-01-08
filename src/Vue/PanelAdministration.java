@@ -232,7 +232,6 @@ public class PanelAdministration extends JPanel{
 		  valider.addActionListener(new java.awt.event.ActionListener() {
 			   public void actionPerformed(java.awt.event.ActionEvent evt) {
 					validerActionPerformed(evt);
-					content.show("accueil");
 			   }
 		  });
 
@@ -303,19 +302,29 @@ public class PanelAdministration extends JPanel{
 		  this.content = content;
 	 }
 	 
-	 private void rechercherActionPerformed(java.awt.event.ActionEvent evt) {                                           
-		  rechercheProg(Integer.parseInt(matricule.getText()));
-		  valider.setEnabled(true);
+	 private void rechercherActionPerformed(java.awt.event.ActionEvent evt) {
+		  if(!matricule.getText().toString().matches("\\p{Digit}+")){
+			   JOptionPane.showMessageDialog(new JFrame(),"Veuillez saisir un entier pour le matricule", "Echec", JOptionPane.ERROR_MESSAGE); 
+		  }
+		  else{
+			   rechercheProg(Integer.parseInt(matricule.getText()));
+			   valider.setEnabled(true);
+		  }
 	 }                                          
 
 	 private void reinitialiserActionPerformed(java.awt.event.ActionEvent evt) {                                              
 		  reinitialiser();
 	 }                                             
 
-	 private void validerActionPerformed(java.awt.event.ActionEvent evt) {                                        
-		  if(filtre =="modifier") modifieProg(Integer.parseInt(matricule.getText()));
+	 private void validerActionPerformed(java.awt.event.ActionEvent evt) {
+		  if(!matricule.getText().toString().matches("\\p{Digit}+")){
+			   JOptionPane.showMessageDialog(new JFrame(),"Veuillez saisir un entier pour le matricule", "Echec", JOptionPane.ERROR_MESSAGE); 
+		  }
+		  else{
+			   if(filtre =="modifier") modifieProg(Integer.parseInt(matricule.getText()));
+			   if(filtre =="supprimer") supprimeProg(Integer.parseInt(matricule.getText()));
+		  }
 		  if(filtre =="ajouter") ajouteProg();
-		  if(filtre =="supprimer") supprimeProg(Integer.parseInt(matricule.getText()));
 	 }                                       
 
 	 private void annulerActionPerformed(java.awt.event.ActionEvent evt) {                                        
@@ -344,19 +353,30 @@ public class PanelAdministration extends JPanel{
 	 }
 	 
 	 private void ajouteProg(){
-		  try {
-			   SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-dd");
-			   Date naissance = dateFormat.parse(dateNaissanceA.getText()+"-"+dateNaissanceM.getSelectedItem().toString()+"-"+dateNaissanceJ.getText());
-			   Date embauche = dateFormat.parse(dateEmbaucheA.getText()+"-"+dateEmbaucheM.getSelectedItem().toString()+"-"+dateEmbaucheJ.getText());
-			   Programmeur prog = new Programmeur(Integer.parseInt(matricule.getText()), nom.getText(), prenom.getText(), adresse.getText(), pseudo.getText(), responsable.getText(), hobby.getText(), naissance, embauche);
-			   dt.ajouteProgrammeur(prog);
-			   listProg.add(prog);
-			   if(filtre == "ajouter"){
-					JOptionPane.showMessageDialog(new JFrame(),"Ajout réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
-					reinitialiser();
-			   } 
-		  } catch (ParseException ex) {
-			   Logger.getLogger(PanelAdministration.class.getName()).log(Level.SEVERE, null, ex);
+		  if(matricule.getText().length()== 0 || nom.getText().length()== 0 || prenom.getText().length() == 0 || adresse.getText().length() == 0 || hobby.getText().length() == 0 || responsable.getText().length() == 0 || pseudo.getText().length() == 0){
+			   JOptionPane.showMessageDialog(new JFrame(),"Veuillez remplir tout les champs !", "Echec", JOptionPane.ERROR_MESSAGE);  
+		  }
+		  else if(!dateNaissanceJ.getText().toString().matches("\\p{Digit}+") || !dateEmbaucheJ.getText().toString().matches("\\p{Digit}+") || !dateNaissanceA.getText().toString().matches("\\p{Digit}+") || !dateEmbaucheJ.getText().toString().matches("\\p{Digit}+") ){
+			   JOptionPane.showMessageDialog(new JFrame(),"Veuillez saisir des entiers pour les dates", "Echec", JOptionPane.ERROR_MESSAGE); 
+		  }
+		  else if(!matricule.getText().toString().matches("\\p{Digit}+")){
+			   JOptionPane.showMessageDialog(new JFrame(),"Veuillez saisir un entier pour le matricule", "Echec", JOptionPane.ERROR_MESSAGE); 
+		  }
+		  else{
+			   try {
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-dd");
+					Date naissance = dateFormat.parse(dateNaissanceA.getText()+"-"+dateNaissanceM.getSelectedItem().toString()+"-"+dateNaissanceJ.getText());
+					Date embauche = dateFormat.parse(dateEmbaucheA.getText()+"-"+dateEmbaucheM.getSelectedItem().toString()+"-"+dateEmbaucheJ.getText());
+					Programmeur prog = new Programmeur(Integer.parseInt(matricule.getText()), nom.getText(), prenom.getText(), adresse.getText(), pseudo.getText(), responsable.getText(), hobby.getText(), naissance, embauche);
+					dt.ajouteProgrammeur(prog);
+					listProg.add(prog);
+					if(filtre == "ajouter"){
+						 JOptionPane.showMessageDialog(new JFrame(),"Ajout réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
+					} 
+					content.show("accueil");
+			   } catch (ParseException ex) {
+					Logger.getLogger(PanelAdministration.class.getName()).log(Level.SEVERE, null, ex);
+			   }
 		  }
 	 }
 	 
@@ -369,7 +389,6 @@ public class PanelAdministration extends JPanel{
 					dt.supprimeProgrammeur(matricule);
 					if(filtre == "supprimer"){
 						 JOptionPane.showMessageDialog(new JFrame(),"Suppression réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
-						 reinitialiser();
 					}
 					listProg.remove(i);
 			   }
@@ -377,12 +396,14 @@ public class PanelAdministration extends JPanel{
 		  if(erreur){
 			   JOptionPane.showMessageDialog(new JFrame(),"Programmeur introuvable", "Echec", JOptionPane.ERROR_MESSAGE);  
 		  }
+		  else{
+			   content.show("accueil");
+		  }
 	 }
 	 
 	 private void modifieProg(int matricule){
 		  supprimeProg(matricule);
 		  ajouteProg();
-		  reinitialiser();
 		  JOptionPane.showMessageDialog(new JFrame(),"Modification réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
 	 }
 	 
@@ -502,8 +523,8 @@ public class PanelAdministration extends JPanel{
 		  hobby.setText("");
 		  dateNaissanceJ.setText("jour");
 		  dateEmbaucheJ.setText("jour");
-		  dateNaissanceM.setSelectedItem(0);
-		  dateEmbaucheM.setSelectedItem(0);
+		  dateNaissanceM.setSelectedIndex(0);
+		  dateEmbaucheM.setSelectedIndex(0);
 		  dateNaissanceA.setText("année");
 		  dateEmbaucheA.setText("année");
 	 }
