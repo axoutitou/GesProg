@@ -14,13 +14,15 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Axel Carnez
+ * @author Axel Odran
  */
 public class DataTransac implements ActionsBD{
 	 private Connection connect;
 	 private Statement stmt;
 	 private ResultSet rs;
-	 
+	 /**
+          * Initialise la connection en base de donnée
+          */
 	 public DataTransac(){
 		  try {
 			   connect = DriverManager.getConnection(Constantes.URL, Constantes.MDP, Constantes.USER);
@@ -29,9 +31,14 @@ public class DataTransac implements ActionsBD{
 			   Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, ex);
 		  }
 	 }
-	 
+         /**
+         * Retourne la liste des programmeurs 
+         * 
+         * @return Une ArrayList composée de Programmeur , qui correspond à la des programmeurs en enregistrer en base.
+         */
+         @Override
 	 public ArrayList<Programmeur> getProgrammeur(){
-		  ArrayList<Programmeur> list = new ArrayList<Programmeur>();
+		  ArrayList<Programmeur> list = new ArrayList<>();
 		   try {
 			   stmt = connect.createStatement();
 			   rs = stmt.executeQuery(Constantes.REQUETE_ALL_PROG);
@@ -55,7 +62,11 @@ public class DataTransac implements ActionsBD{
 		   
 		   return list;
 	 }
-	 
+	  /**
+          * Ajoute un nouveau programmeur à la base de donnée
+          * @param prog 
+          */
+         @Override
 	 public void ajouteProgrammeur(Programmeur prog){
 		  try {
 			   PreparedStatement preparedStmt = connect.prepareStatement(Constantes.REQUETE_AJOUT_PROG);
@@ -75,7 +86,10 @@ public class DataTransac implements ActionsBD{
 			   Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, ex);
 		  }
 	 }
-	 
+	 /**
+          * 
+          * @param matricule 
+          */
 	 public void supprimeProgrammeur(int matricule){
 		  try{   
 			   String Matricule = Integer.toString(matricule);

@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  *
- * @author Axel Carnez
+ * @author Axel Odran
  */
 public interface ActionsBD {
 	 public ArrayList<Programmeur> getProgrammeur();

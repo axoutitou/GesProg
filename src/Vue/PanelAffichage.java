@@ -12,18 +12,22 @@ import javax.swing.*;
 
 /**
  *
- * @author Axel Carnez
+ * @author Axel Odran
  */
 public class PanelAffichage extends JPanel{
 	 private JTextArea affichage;
 	 private JScrollPane scroll;
-	 
+	 /**
+          * Taille de la Box du Text +et Scroll Bar
+          */
 	 public PanelAffichage(){
 		  affichage = new JTextArea(15, 60);
 		  scroll = new JScrollPane(affichage);
 		  this.add(scroll);
 	 }
-	 
+	 /**
+          *Affichage d'un programmeur
+          */
 	 public void afficheProgrammeur(){
 		  DataTransac dt = new DataTransac();
 		  ArrayList<Programmeur> list = dt.getProgrammeur();

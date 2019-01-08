@@ -6,8 +6,8 @@
 package Controleur;
 
 /**
- *
- * @author Axel Carnez
+ * Classe comportant des constantes divers
+ * @author Axel Odran
  */
 public class Constantes {
 	 public static final String URL ="jdbc:derby://localhost:1527/LSI _ L3 _ JAVA" ;

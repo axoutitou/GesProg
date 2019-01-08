@@ -9,15 +9,16 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Axel Carnez
+ * @author Axel Odran
  */
 public class start {
 
 	 /**
-	  * @param args the command line arguments
+	  * Lance la fentere mère
 	  */
 	 public static void main(String[] args) {
 		  FenetreMere windows = new FenetreMere();
 	 }
 	 
 }
+

@@ -24,7 +24,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Axel Carnez
+ * @author Axel Odran
  */
 public class PanelAdministration extends JPanel{
 	  private JTextField adresse;

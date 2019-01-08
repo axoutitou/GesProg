@@ -16,7 +16,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
- * @author Axel Carnez
+ * @author Axel Odran
  */
 public abstract class GestionVueAbstraite extends JFrame{
 	 //Gestion des différents panels

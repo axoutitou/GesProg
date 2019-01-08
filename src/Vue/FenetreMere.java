@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author 20181591
+ * @author Axel Odran
  */
 public class FenetreMere extends GestionVueAbstraite{
             //Menu
